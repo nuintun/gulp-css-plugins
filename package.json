@@ -1,0 +1,26 @@
+{
+  "name": "gulp-css-plugins",
+  "version": "1.0.0",
+  "description": "The gulp-css enhance plugins.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuintun/gulp-css-plugins.git"
+  },
+  "keywords": [
+    "gulp",
+    "css"
+  ],
+  "author": "nuintun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuintun/gulp-css-plugins/issues"
+  },
+  "homepage": "https://github.com/nuintun/gulp-css-plugins",
+  "dependencies": {
+    "postcss": "^6.0.6",
+    "cssnano": "^3.10.0",
+    "autoprefixer": "^7.1.2",
+    "@nuintun/gulp-css": "https://github.com/nuintun/gulp-css/archive/master.tar.gz"
+  }
+}
