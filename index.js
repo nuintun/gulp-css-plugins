@@ -26,13 +26,16 @@ module.exports = function(options) {
   if (options.minify) {
     addons.css = [
       function(vinyl) {
-        return new Promise(function(resolve) {
+        return new Promise(function(resolve, reject) {
           cssnano
             .process(vinyl.contents.toString(), options.cssnano)
             .then(function(result) {
               vinyl.contents = new Buffer(result.css);
 
               resolve(vinyl);
+            })
+            .catch(function(error) {
+              reject(error);
             });
         });
       },
@@ -41,13 +44,16 @@ module.exports = function(options) {
   } else {
     addons.css = [
       function(vinyl) {
-        return new Promise(function(resolve) {
+        return new Promise(function(resolve, reject) {
           postcss(autoprefixer(options.autoprefixer))
             .process(vinyl.contents.toString())
             .then(function(result) {
               vinyl.contents = new Buffer(result.css);
 
               resolve(vinyl);
+            })
+            .catch(function(error) {
+              reject(error);
             });
         });
       },
