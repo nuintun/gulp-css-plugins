@@ -24,35 +24,35 @@ module.exports = function(options) {
   var addons = {};
 
   if (options.minify) {
-    addons.css = function(vinyl, opts, next) {
-      var context = this;
+    addons.css = [
+      function(vinyl) {
+        return new Promise(function(resolve) {
+          cssnano
+            .process(vinyl.contents.toString(), options.cssnano)
+            .then(function(result) {
+              vinyl.contents = new Buffer(result.css);
 
-      cssnano
-        .process(vinyl.contents.toString(), options.cssnano)
-        .then(function(result) {
-          vinyl.contents = new Buffer(result.css);
-
-          defAddons.css.process(vinyl, opts, function(vinyl) {
-            context.push(vinyl);
-            next();
-          });
+              resolve(vinyl);
+            });
         });
-    };
+      },
+      css.plugins.css
+    ];
   } else {
-    addons.css = function(vinyl, opts, next) {
-      var context = this;
+    addons.css = [
+      function(vinyl) {
+        return new Promise(function(resolve) {
+          postcss(autoprefixer(options.autoprefixer))
+            .process(vinyl.contents.toString())
+            .then(function(result) {
+              vinyl.contents = new Buffer(result.css);
 
-      postcss(autoprefixer(options.autoprefixer))
-        .process(vinyl.contents.toString())
-        .then(function(result) {
-          vinyl.contents = new Buffer(result.css);
-
-          defAddons.css.process(vinyl, opts, function(vinyl) {
-            context.push(vinyl);
-            next();
-          });
+              resolve(vinyl);
+            });
         });
-    };
+      },
+      css.plugins.css
+    ];
   }
 
   return addons;
