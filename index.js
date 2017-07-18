@@ -36,7 +36,7 @@ module.exports = function(options) {
             });
         });
       },
-      css.plugins.css
+      defAddons.css
     ];
   } else {
     addons.css = [
@@ -51,7 +51,7 @@ module.exports = function(options) {
             });
         });
       },
-      css.plugins.css
+      defAddons.css
     ];
   }
 
