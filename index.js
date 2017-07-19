@@ -2,10 +2,7 @@
 
 var postcss = require('postcss');
 var cssnano = require('cssnano');
-var css = require('@nuintun/gulp-css');
 var autoprefixer = require('autoprefixer');
-
-var defAddons = css.defaults.plugins;
 
 module.exports = function(options) {
   options = options || {};
@@ -39,7 +36,7 @@ module.exports = function(options) {
             });
         });
       },
-      defAddons.css
+      'inline-loader'
     ];
   } else {
     addons.css = [
@@ -57,7 +54,7 @@ module.exports = function(options) {
             });
         });
       },
-      defAddons.css
+      'inline-loader'
     ];
   }
 
