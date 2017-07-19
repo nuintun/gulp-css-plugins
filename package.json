@@ -20,6 +20,7 @@
   "dependencies": {
     "postcss": "^6.0.6",
     "cssnano": "^3.10.0",
-    "autoprefixer": "^7.1.2"
+    "autoprefixer": "^7.1.2",
+    "@nuintun/through": "https://github.com/nuintun/through/archive/master.tar.gz"
   }
 }
