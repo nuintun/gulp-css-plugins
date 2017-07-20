@@ -22,37 +22,35 @@ module.exports = function(options) {
   var addons = {};
 
   if (options.minify) {
-    addons.css = [
-      through(function(vinyl, encoding, next) {
+    addons.css = function(vinyl) {
+      return new Promise(function(resolve, reject) {
         cssnano
           .process(vinyl.contents.toString(), options.cssnano)
           .then(function(result) {
             vinyl.contents = new Buffer(result.css);
 
-            next(null, vinyl);
+            resolve(vinyl);
           })
           .catch(function(error) {
-            next(error);
+            reject(error);
           });
-      }),
-      'inline-loader'
-    ];
+      });
+    };
   } else {
-    addons.css = [
-      through(function(vinyl, encoding, next) {
+    addons.css = function(vinyl) {
+      return new Promise(function(resolve, reject) {
         postcss(autoprefixer(options.autoprefixer))
           .process(vinyl.contents.toString())
           .then(function(result) {
             vinyl.contents = new Buffer(result.css);
 
-            next(null, vinyl);
+            resolve(vinyl);
           })
           .catch(function(error) {
-            next(error);
+            reject(error);
           });
-      }),
-      'inline-loader'
-    ];
+      });
+    };
   }
 
   return addons;
