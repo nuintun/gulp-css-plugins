@@ -21,20 +21,23 @@ module.exports = function(options) {
   var addons = {};
 
   if (options.minify) {
-    addons.css = function(vinyl) {
-      return new Promise(function(resolve, reject) {
-        cssnano
-          .process(vinyl.contents.toString(), options.cssnano)
-          .then(function(result) {
-            vinyl.contents = new Buffer(result.css);
+    addons.css = [
+      'inline-loader',
+      function(vinyl) {
+        return new Promise(function(resolve, reject) {
+          cssnano
+            .process(vinyl.contents.toString(), options.cssnano)
+            .then(function(result) {
+              vinyl.contents = new Buffer(result.css);
 
-            resolve(vinyl);
-          })
-          .catch(function(error) {
-            reject(error);
-          });
-      });
-    };
+              resolve(vinyl);
+            })
+            .catch(function(error) {
+              reject(error);
+            });
+        });
+      }
+    ]
   } else {
     addons.css = function(vinyl) {
       return new Promise(function(resolve, reject) {
