@@ -2,7 +2,6 @@
 
 var postcss = require('postcss');
 var cssnano = require('cssnano');
-var through = require('@nuintun/through');
 var autoprefixer = require('autoprefixer');
 
 module.exports = function(options) {
