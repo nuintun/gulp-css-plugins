@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/nuintun/gulp-css-plugins",
   "dependencies": {
-    "postcss": "^6.0.11",
+    "postcss": "^6.0.13",
     "cssnano": "^3.10.0",
-    "autoprefixer": "^7.1.4"
+    "autoprefixer": "^7.1.5"
   }
 }
