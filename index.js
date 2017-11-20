@@ -18,11 +18,14 @@ module.exports = function(options) {
   options = options || {};
   options.cssnano = options.cssnano || {};
 
-  options.autoprefixer = Object.assign({
-    add: true,
-    remove: true,
-    browsers: ['> 1% in CN', '> 5%', 'ie >= 8']
-  }, options.autoprefixer);
+  options.autoprefixer = Object.assign(
+    {
+      add: true,
+      remove: true,
+      browsers: ['> 1% in CN', '> 5%', 'ie >= 8']
+    },
+    options.autoprefixer
+  );
 
   // Open cssnano use safe mode
   options.cssnano.safe = true;
@@ -37,28 +40,28 @@ module.exports = function(options) {
         return new Promise((resolve, reject) => {
           cssnano
             .process(vinyl.contents.toString(), options.cssnano)
-            .then((result) => {
+            .then(result => {
               vinyl.contents = new Buffer(result.css);
 
               resolve(vinyl);
             })
-            .catch((error) => {
+            .catch(error => {
               reject(error);
             });
         });
       }
-    ]
+    ];
   } else {
     addons.css = function(vinyl) {
       return new Promise((resolve, reject) => {
         postcss(autoprefixer(options.autoprefixer))
           .process(vinyl.contents.toString())
-          .then((result) => {
+          .then(result => {
             vinyl.contents = new Buffer(result.css);
 
             resolve(vinyl);
           })
-          .catch((error) => {
+          .catch(error => {
             reject(error);
           });
       });

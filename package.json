@@ -7,10 +7,7 @@
     "type": "git",
     "url": "git+https://github.com/nuintun/gulp-css-plugins.git"
   },
-  "keywords": [
-    "gulp",
-    "css"
-  ],
+  "keywords": ["gulp", "css"],
   "author": "nuintun",
   "license": "MIT",
   "bugs": {
