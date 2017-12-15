@@ -20,6 +20,6 @@
   "dependencies": {
     "postcss": "^6.0.14",
     "cssnano": "^3.10.0",
-    "autoprefixer": "^7.1.6"
+    "autoprefixer": "^7.2.3"
   }
 }
