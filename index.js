@@ -35,7 +35,7 @@ module.exports = function(options) {
 
   if (options.minify) {
     addons.css = [
-      'inline-loader',
+      'default',
       function(vinyl) {
         return new Promise((resolve, reject) => {
           cssnano
