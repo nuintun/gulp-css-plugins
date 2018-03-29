@@ -29,10 +29,8 @@ const isCSSFile = path => extname(path).toLowerCase() === '.css';
  * @function css
  * @param {Object} options
  */
-module.exports = function(options) {
-  options = options || {};
+module.exports = function(options = {}) {
   options.cssnano = options.cssnano || {};
-
   options.autoprefixer = Object.assign(
     {
       add: true,
@@ -41,7 +39,6 @@ module.exports = function(options) {
     },
     options.autoprefixer
   );
-
   // Open cssnano use safe mode
   options.cssnano.safe = true;
   options.cssnano.autoprefixer = options.autoprefixer;
