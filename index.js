@@ -19,11 +19,12 @@ const autoprefixer = require('autoprefixer');
 const toBuffer = Buffer.from ? Buffer.from : string => new Buffer(string);
 
 /**
- * @function isCSSFile
+ * @function isFileType
  * @param {string} path
+ * @param {string} type
  * @returns {boolean}
  */
-const isCSSFile = path => extname(path).toLowerCase() === '.css';
+const isFileType = (path, type) => extname(path).toLowerCase() === `.${type}`;
 
 /**
  * @function css
@@ -46,7 +47,7 @@ module.exports = function(options = {}) {
   return {
     name: 'gulp-css-plugins',
     async bundle(path, contents) {
-      if (!isCSSFile(path)) return contents;
+      if (!isFileType(path, 'css')) return contents;
 
       // Get contents string
       contents = contents.toString();
