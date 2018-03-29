@@ -48,27 +48,19 @@ module.exports = function(options) {
 
   return {
     name: 'gulp-css-plugins',
-    async transform(path, contents) {
-      if (options.minify || !isCSSFile(path)) return contents;
+    async bundle(path, contents) {
+      if (!isCSSFile(path)) return contents;
 
+      // Get contents string
       contents = contents.toString();
 
-      const result = await postcss(autoprefixer(options.autoprefixer)).process(contents, { from: path });
+      // Process css file
+      const result = options.minify
+        ? await cssnano.process(vinyl.contents.toString(), options.cssnano)
+        : await postcss(autoprefixer(options.autoprefixer)).process(contents, { from: path });
 
-      contents = result.css;
-
-      return toBuffer(contents);
-    },
-    async bundle(path, contents) {
-      if (options.minify && isCSSFile(path)) {
-        contents = contents.toString();
-
-        const result = await cssnano.process(vinyl.contents.toString(), options.cssnano);
-
-        contents = result.css;
-
-        return toBuffer(contents);
-      }
+      // Get code and to buffer
+      contents = toBuffer(result.css);
 
       return contents;
     }
