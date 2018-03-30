@@ -46,7 +46,7 @@ module.exports = function(options = {}) {
 
   return {
     name: 'gulp-css-plugins',
-    async transformed(path, contents) {
+    async parsed(path, contents) {
       if (!isFileType(path, 'css')) return contents;
 
       // Get contents string
