@@ -50,6 +50,8 @@ module.exports = function(options = {}) {
         ? await cssnano.process(contents, options.cssnano)
         : await postcss(autoprefixer(options.autoprefixer)).process(contents, { from: path });
 
+      contents = result.css;
+
       return contents;
     }
   };
