@@ -12,13 +12,6 @@ const { extname } = require('path');
 const autoprefixer = require('autoprefixer');
 
 /**
- * @function toBuffer
- * @param {string} string
- * @returns {Buffer}
- */
-const toBuffer = Buffer.from ? Buffer.from : string => new Buffer(string);
-
-/**
  * @function isFileType
  * @param {string} path
  * @param {string} type
@@ -56,9 +49,6 @@ module.exports = function(options = {}) {
       const result = options.minify
         ? await cssnano.process(contents, options.cssnano)
         : await postcss(autoprefixer(options.autoprefixer)).process(contents, { from: path });
-
-      // Get code and to buffer
-      contents = toBuffer(result.css);
 
       return contents;
     }
