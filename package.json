@@ -7,7 +7,10 @@
     "type": "git",
     "url": "git+https://github.com/nuintun/gulp-css-plugins.git"
   },
-  "keywords": ["gulp", "css"],
+  "keywords": [
+    "gulp",
+    "css"
+  ],
   "author": {
     "name": "nuintun",
     "email": "nuintun@qq.com"
@@ -20,9 +23,9 @@
     "node": ">=7.6.0"
   },
   "dependencies": {
-    "postcss": "^6.0.22",
-    "cssnano": "^3.10.0",
-    "autoprefixer": "^8.5.2"
+    "postcss": "^6.0.23",
+    "cssnano": "^4.0.0",
+    "autoprefixer": "^8.6.5"
   },
   "homepage": "https://github.com/nuintun/gulp-css-plugins#readme"
 }
