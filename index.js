@@ -33,8 +33,7 @@ module.exports = function(options = {}) {
     },
     options.autoprefixer
   );
-  // Open cssnano use safe mode
-  options.cssnano.safe = true;
+  options.cssnano.from = undefined;
   options.cssnano.autoprefixer = options.autoprefixer;
 
   return {
