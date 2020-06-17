@@ -23,7 +23,7 @@ const isFileType = (path, type) => extname(path).toLowerCase() === `.${type}`;
  * @function css
  * @param {Object} options
  */
-module.exports = function(options = {}) {
+module.exports = function (options = {}) {
   options.cssnano = options.cssnano || {};
   options.autoprefixer = Object.assign(
     {
