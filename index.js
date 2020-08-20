@@ -37,7 +37,7 @@ module.exports = function (options = {}) {
 
   return {
     name: 'gulp-css-plugins',
-    async moduleDidComplete(path, contents) {
+    async moduleDidCompleted(path, contents) {
       if (!isFileType(path, 'css')) return contents;
 
       // Get contents string
