@@ -1,6 +1,6 @@
 {
   "name": "@nuintun/gulp-css-plugins",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The gulp-css enhance plugins.",
   "main": "index.js",
   "repository": {
