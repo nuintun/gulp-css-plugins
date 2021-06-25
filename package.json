@@ -22,9 +22,12 @@
   "engines": {
     "node": ">=7.6.0"
   },
+  "scripts": {
+    "format": "prettier --write index.js"
+  },
   "peerDependencies": {
     "postcss": ">=7.0.0",
-    "cssnano": ">=4.0.0",
+    "cssnano": ">=5.0.0",
     "autoprefixer": ">=9.0.0"
   },
   "homepage": "https://github.com/nuintun/gulp-css-plugins#readme"

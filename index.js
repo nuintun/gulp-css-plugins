@@ -7,8 +7,8 @@
 'use strict';
 
 const postcss = require('postcss');
-const cssnano = require('cssnano');
 const { extname } = require('path');
+const cssnano = require('cssnano')();
 const autoprefixer = require('autoprefixer');
 
 /**
