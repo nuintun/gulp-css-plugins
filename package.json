@@ -1,6 +1,6 @@
 {
   "name": "@nuintun/gulp-css-plugins",
-  "version": "1.0.3",
+  "version": "3.0.0",
   "description": "The gulp-css enhance plugins.",
   "main": "index.js",
   "repository": {
@@ -28,7 +28,8 @@
   "peerDependencies": {
     "postcss": ">=7.0.0",
     "cssnano": ">=5.0.0",
-    "autoprefixer": ">=9.0.0"
+    "autoprefixer": ">=9.0.0",
+    "@nuintun/gulp-css": "^3.0.0"
   },
   "homepage": "https://github.com/nuintun/gulp-css-plugins#readme"
 }
